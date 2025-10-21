@@ -57,7 +57,7 @@ const Footer = () => {
               <Clock className="w-5 h-5 flex-shrink-0 mt-1" />
               <p>
                 Every Day<br />
-                13:00 – 03:00
+                13:00 – 05:00
               </p>
             </div>
           </div>
