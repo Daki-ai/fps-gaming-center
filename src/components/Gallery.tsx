@@ -34,7 +34,7 @@ const Gallery = () => {
               src={images[currentIndex]}
               alt={`FPS Gaming Center - Image ${currentIndex + 1}`}
               className={`w-full h-full object-cover transition-opacity duration-500 ${
-                currentIndex === 2 ? "object-[center_60%]" : ""
+                currentIndex === 2 ? "object-[center_55%]" : ""
               }`}
             />
           </div>
