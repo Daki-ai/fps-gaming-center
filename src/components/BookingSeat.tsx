@@ -58,7 +58,7 @@ const BookingSeat = () => {
               <h3 className="text-2xl font-bold mb-2 text-gold">Hours</h3>
               <p className="text-muted-foreground text-lg">
                 Every Day<br />
-                13:00 – 03:00
+                13:00 – 05:00
               </p>
             </div>
           </div>
