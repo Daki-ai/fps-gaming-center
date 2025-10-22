@@ -83,7 +83,7 @@ const EliteZone = () => {
                   FPS Optimized
                 </h3>
                 <p className="text-lg text-muted-foreground">
-                  All our PCs are equipped with the <span className="text-gold font-semibold">FPS Optimizer suite</span>, 
+                  All our PCs are equipped with the <a href="https://fpsoptimizer.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gold font-semibold hover:text-gold-glow transition-colors underline">FPS Optimizer</a>, 
                   ensuring maximum performance and stability. Every system is fine-tuned to deliver 
                   the highest frame rates and lowest latency possible.
                 </p>
