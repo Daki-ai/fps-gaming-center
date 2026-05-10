@@ -1,5 +1,5 @@
 ﻿import { Instagram, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
-import fpsLogo from "@/assets/fps-logo.jpg";
+import fpsLogo from "@/assets/fps-logo-new.png";
 
 const Footer = () => {
   const whatsappMessage = encodeURIComponent("Здраво! Сакам да резервирам седиште во FPS Gaming Center ");

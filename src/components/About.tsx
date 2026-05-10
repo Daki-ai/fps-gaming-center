@@ -1,8 +1,8 @@
-import { MapPin, Users, Trophy } from "lucide-react";
+﻿import { MapPin, Users, Trophy } from "lucide-react";
 
 const About = () => {
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-black to-secondary">
+    <section className="pt-4 pb-16 md:pt-6 md:pb-20 px-4 bg-gradient-to-b from-black to-secondary">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
