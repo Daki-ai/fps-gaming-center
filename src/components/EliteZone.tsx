@@ -1,4 +1,4 @@
-import { Cpu, Monitor, Mouse, Headphones, Zap } from "lucide-react";
+﻿import { Cpu, Monitor, Mouse, Headphones, Zap } from "lucide-react";
 import eliteZoneLogo from "@/assets/elite-zone-logo.jpg";
 import eliteZonePhoto from "@/assets/elite-zone-photo.jpg";
 import fpsOptimizer from "@/assets/fps-optimizer.png";
