@@ -10,7 +10,7 @@ const About = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            FPS Gaming Center is one of the most advanced internet cafés in Macedonia, 
+            FPS Gaming Center is the first 600 Hz gaming center in Macedonia, 
             designed for both professional esports athletes and casual gamers. Located in 
             the heart of Butel, Skopje, we offer an unparalleled gaming experience with 
             cutting-edge technology and a premium atmosphere.
