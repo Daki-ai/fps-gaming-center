@@ -1,9 +1,10 @@
-﻿import { Instagram, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Instagram, Phone, MapPin, Clock, MessageCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import fpsLogo from "@/assets/fps-logo-new.png";
 
 const Footer = () => {
-  const whatsappMessage = encodeURIComponent("Здраво! Сакам да резервирам седиште во FPS Gaming Center ");
-  const viberMessage = encodeURIComponent("Здраво! Сакам да резервирам седиште во FPS Gaming Center ");
+  const whatsappMessage = encodeURIComponent("Здраво! Сакам да резервирам седиште во FPS Gaming Center");
+  const viberMessage = encodeURIComponent("Здраво! Сакам да резервирам седиште во FPS Gaming Center");
 
   return (
     <footer className="bg-secondary border-t border-border py-12 px-4">
@@ -62,8 +63,15 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 text-center text-muted-foreground text-sm">
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground text-sm">
           <p>&copy; {new Date().getFullYear()} FPS Gaming Center. All rights reserved.</p>
+          <Link
+            to="/start"
+            className="group inline-flex items-center gap-2 hover:text-gold transition-colors"
+          >
+            <span>Open Player Hub</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </footer>
