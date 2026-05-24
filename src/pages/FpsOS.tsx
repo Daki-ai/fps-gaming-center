@@ -1,10 +1,11 @@
+import TopBar from "@/components/os/TopBar";
 import HeroOS from "@/components/os/HeroOS";
 import AskFpsAI from "@/components/os/AskFpsAI";
 import ProConfigLibrary from "@/components/os/ProConfigLibrary";
 import TodayInCS2 from "@/components/os/TodayInCS2";
-import FpsAcademy from "@/components/os/FpsAcademy";
-import TournamentSection from "@/components/os/TournamentSection";
 import ZoneUpgrade from "@/components/os/ZoneUpgrade";
+import TournamentSection from "@/components/os/TournamentSection";
+import FpsAcademy from "@/components/os/FpsAcademy";
 import SessionMode from "@/components/os/SessionMode";
 import FooterAIVERS from "@/components/os/FooterAIVERS";
 
@@ -18,13 +19,14 @@ const FpsOS = () => {
       </div>
 
       <div className="relative z-10">
+        <TopBar />
         <HeroOS />
         <AskFpsAI />
         <ProConfigLibrary />
         <TodayInCS2 />
-        <FpsAcademy />
-        <TournamentSection />
         <ZoneUpgrade />
+        <TournamentSection />
+        <FpsAcademy />
         <SessionMode />
         <FooterAIVERS />
       </div>

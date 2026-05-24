@@ -1,50 +1,109 @@
-import { Newspaper, Swords, Map, Eye, Calendar } from "lucide-react";
-
-const cs2Cards = [
-  { icon: Newspaper, title: "Latest CS2 Update", tag: "Patch Notes", text: "Stay locked in. Check today updates and balance changes before you queue.", accent: "gold" },
-  { icon: Swords, title: "Match of the Day", tag: "Live Now", text: "Top tier matchups from the pro circuit. Watch and learn from the best.", accent: "cyan" },
-  { icon: Map, title: "Map Tip", tag: "Tactical", text: "Daily callouts, smokes, and rotations to give you the competitive edge.", accent: "gold" },
-  { icon: Eye, title: "Meta Watch", tag: "Strategy", text: "What is working in the current patch. Weapon picks, utility usage, popular strats.", accent: "cyan" },
-];
+import { Calendar, Swords, GraduationCap, Clock, ExternalLink } from "lucide-react";
+import OfficialCS2News from "./OfficialCS2News";
+import { esportsToday, trainingFocus } from "@/data/esportsToday";
 
 const TodayInCS2 = () => {
+  const formatDate = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  const esports = esportsToday.find(e => e.active);
+  const training = trainingFocus.find(t => t.active);
+
   return (
-    <section id="today-cs2" className="px-4 py-20 md:py-28">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-sm">
-            <Calendar className="w-4 h-4 text-cyan-400" />
-            <span className="text-xs uppercase tracking-widest text-cyan-400 font-semibold">Daily Feed</span>
+    <section id="today-cs2" className="px-4 py-12 md:py-14">
+      <div className="max-w-[1280px] mx-auto">
+
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-sm">
+              <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="text-[10px] uppercase tracking-widest text-cyan-400 font-semibold">Daily Feed</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              <span className="text-white">Today in </span><span className="text-gold-gradient">CS2</span>
+            </h2>
+            <p className="text-sm text-gray-400 mt-1">Official updates, pro matches, and tactical focus.</p>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="text-white">Today in </span><span className="text-gold-gradient">CS2</span>
-          </h2>
-          <p className="text-base text-gray-400 max-w-2xl mx-auto">
-            Stay locked in. Check today updates, pro matches, and tactical tips before you queue.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {cs2Cards.map((card, i) => {
-            const Icon = card.icon;
-            const isGold = card.accent === "gold";
-            return (
-              <div key={i} className="group relative cursor-pointer">
-                <div className={"absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-sm " + (isGold ? "bg-gradient-to-r from-gold/0 via-gold/20 to-gold/0" : "bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-cyan-500/0")} />
-                <div className={"relative bg-black/60 border rounded-2xl p-6 backdrop-blur-xl transition-all duration-300 h-full " + (isGold ? "border-white/10 hover:border-gold/40" : "border-white/10 hover:border-cyan-500/40")}>
-                  <div className={"w-12 h-12 rounded-xl flex items-center justify-center mb-4 " + (isGold ? "bg-gold/10 border border-gold/30" : "bg-cyan-500/10 border border-cyan-500/30")}>
-                    <Icon className={"w-6 h-6 " + (isGold ? "text-gold" : "text-cyan-400")} />
-                  </div>
-                  <span className={"inline-block text-[10px] uppercase tracking-widest mb-2 px-2 py-0.5 rounded " + (isGold ? "bg-gold/10 text-gold" : "bg-cyan-500/10 text-cyan-400")}>
-                    {card.tag}
-                  </span>
-                  <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{card.text}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+          <div className="lg:col-span-1">
+            <OfficialCS2News />
+          </div>
+
+          <div className="bg-black/40 border border-gold/20 rounded-2xl p-5 backdrop-blur-xl flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center">
+                  <Swords className="w-4 h-4 text-gold" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white uppercase tracking-wider">Esports Today</h3>
+                  <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Source: HLTV</p>
                 </div>
               </div>
-            );
-          })}
+              {esports && (
+                <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-mono uppercase tracking-wider text-emerald-400">Active</span>
+              )}
+            </div>
+
+            {esports ? (
+              <>
+                <h4 className="text-base font-bold text-white mb-2">{esports.title}</h4>
+                <p className="text-xs text-gray-400 leading-relaxed mb-4 flex-1">{esports.description}</p>
+                <div className="flex items-center justify-between pt-3 border-t border-white/5 text-[10px] font-mono">
+                  <div className="flex items-center gap-1.5 text-gray-500">
+                    <Clock className="w-3 h-3" />
+                    <span>{formatDate(esports.date)}</span>
+                  </div>
+                  {esports.sourceLink && (
+                    <a href={esports.sourceLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-gold/80 hover:text-gold uppercase tracking-wider">
+                      <span>HLTV</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+              </>
+            ) : (
+              <p className="text-sm text-gray-500 text-center py-6">No esports event today.</p>
+            )}
+          </div>
+
+          <div className="bg-black/40 border border-gold/20 rounded-2xl p-5 backdrop-blur-xl flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 text-gold" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white uppercase tracking-wider">Training Focus</h3>
+                  <p className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Source: FPS Academy</p>
+                </div>
+              </div>
+              {training && (
+                <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-mono uppercase tracking-wider text-emerald-400">Active</span>
+              )}
+            </div>
+
+            {training ? (
+              <>
+                <h4 className="text-base font-bold text-white mb-1">{training.title}</h4>
+                <p className="text-[10px] text-cyan-400/80 uppercase tracking-wider font-mono mb-2">{training.topic}</p>
+                <p className="text-xs text-gray-400 leading-relaxed mb-4 flex-1">{training.description}</p>
+                <div className="flex items-center justify-between pt-3 border-t border-white/5 text-[10px] font-mono">
+                  <div className="flex items-center gap-1.5 text-gray-500">
+                    <Clock className="w-3 h-3" />
+                    <span>{formatDate(training.date)}</span>
+                  </div>
+                  <span className="text-gold/80 uppercase tracking-wider">Internal</span>
+                </div>
+              </>
+            ) : (
+              <p className="text-sm text-gray-500 text-center py-6">No training focus today.</p>
+            )}
+          </div>
+
         </div>
+
       </div>
     </section>
   );
