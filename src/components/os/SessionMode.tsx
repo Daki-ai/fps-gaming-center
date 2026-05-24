@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Flame, Target, Coffee, Trophy, Crosshair, CheckCircle2 } from "lucide-react";
 
 const sessionModes = [
   { id: "warmup", name: "Warmup", icon: Flame, checklist: ["Open Aim Lab or DM server", "Stretch wrists and shoulders", "Adjust mouse and headset", "10 minutes deathmatch", "Hydrate"] },
   { id: "faceit", name: "FACEIT Grind", icon: Target, checklist: ["Open FACEIT AC", "Warm up 10 minutes", "Check mouse and headset", "Use stable config", "Queue with focus"] },
-  { id: "casual", name: "Casual", icon: Coffee, checklist: ["Pick your mood  DM, retake, or chill MM", "Set comfortable volume", "Play without pressure", "Have fun"] },
+  { id: "casual", name: "Casual", icon: Coffee, checklist: ["Pick your mood - DM, retake, or chill MM", "Set comfortable volume", "Play without pressure", "Have fun"] },
   { id: "tournament", name: "Tournament Practice", icon: Trophy, checklist: ["Drill team smokes and execs", "Mid-round comms practice", "Scrim or PUG with team", "Watch demo afterwards"] },
   { id: "aim", name: "Aim Training", icon: Crosshair, checklist: ["Open Aim Lab / Kovaak", "Run flick + tracking routine", "30 minutes focused", "DM map for 15 min", "Review hits/misses"] },
 ];
@@ -13,8 +13,19 @@ const SessionMode = () => {
   const [activeMode, setActiveMode] = useState<string | null>(null);
   const active = sessionModes.find(m => m.id === activeMode);
 
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && detail.modeId) {
+        setActiveMode(detail.modeId);
+      }
+    };
+    window.addEventListener("openSessionMode", handler);
+    return () => window.removeEventListener("openSessionMode", handler);
+  }, []);
+
   return (
-    <section className="px-4 py-20 md:py-28">
+    <section id="session-mode" className="px-4 py-20 md:py-28">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-sm">

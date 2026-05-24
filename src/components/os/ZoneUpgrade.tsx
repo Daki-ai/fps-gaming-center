@@ -1,4 +1,4 @@
-import { Zap, Crown, Gem } from "lucide-react";
+﻿import { Zap, Crown, Gem } from "lucide-react";
 
 const zones = [
   { name: "Arena", icon: Zap, hz: "360Hz", desc: "Competitive setup", price: "70", accent: "gray", featured: false },
@@ -8,7 +8,7 @@ const zones = [
 
 const ZoneUpgrade = () => {
   return (
-    <section className="px-4 py-20 md:py-28 bg-gradient-to-b from-transparent via-black/40 to-transparent">
+    <section id="zone-upgrade" className="px-4 py-20 md:py-28 bg-gradient-to-b from-transparent via-black/40 to-transparent">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-gold/10 border border-gold/30 backdrop-blur-sm">
